@@ -11,7 +11,7 @@ public class AccountPM {
 		return balance;
 	}
 	
-	public PublicMoney withdrawal(PublicMoney money) {
+	public PublicMoney withdraw(PublicMoney money) {
 		balance.amount -= money.amount;
 		return balance;
 	}
