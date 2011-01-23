@@ -3,11 +3,12 @@ package ch03.book;
 public class BookMain {
 
 	public static void main(String[] args) {
-		BookCatalog catalog = new BookCatalog();
 		if (args.length == 0) {
 			printUsage();
 			return;
 		}
+		
+		BookCatalog catalog = new BookCatalog();
 		
 		if (args[0].equals("-a")) {
 			catalog.printAllBooks();
