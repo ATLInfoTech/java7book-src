@@ -2,25 +2,23 @@ package ch03.book;
 
 public class Book {
 
-	private String isbn;
 	private String title;
 	private int price;
 
-	public Book(String isbn, String title, int price) {
-		this.isbn = isbn;
+	public Book(String title, int price) {
 		this.title = title;
 		this.price = price;
 	}
 
-	public boolean titleLike(String isbn) {
-		if (isbn == null)
+	public boolean titleLike(String keyword) {
+		if (keyword == null)
 			return false;
 
-		return this.isbn.equals(isbn);
+		return this.title.contains(keyword);
 	}
 
 	public void printInfo() {
-		System.out.println("力格:" + title + ", 啊拜:" + price + ", ISBN=" + isbn);
+		System.out.println("力格:" + title + ", 啊拜:" + price);
 	}
 
 }
