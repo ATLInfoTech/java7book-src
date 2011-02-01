@@ -11,6 +11,7 @@ public class AmountDiscountCoupon extends Coupon {
 		this.amount = amount;
 	}
 
+	@Override
 	public int calculateDiscount(int price) {
 		return amount;
 	}
