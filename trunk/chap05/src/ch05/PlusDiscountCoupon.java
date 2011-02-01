@@ -26,4 +26,12 @@ public class PlusDiscountCoupon extends AmountDiscountCoupon {
 		return amount;
 	}
 
+	public int getMinimumPrice() {
+		return minimumPrice;
+	}
+
+	public int getPlusAmount() {
+		return plusAmount;
+	}
+
 }
