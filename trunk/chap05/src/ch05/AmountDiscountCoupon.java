@@ -15,4 +15,10 @@ public class AmountDiscountCoupon extends Coupon {
 	public int calculateDiscount(int price) {
 		return amount;
 	}
+
+	@Override
+	public String toString() {
+		return "AmountDiscountCoupon:" + super.toString() + ", 할인금액=" + amount;
+	}
+
 }

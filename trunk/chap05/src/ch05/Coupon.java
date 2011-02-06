@@ -1,5 +1,6 @@
 package ch05;
 
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public abstract class Coupon {
@@ -27,4 +28,11 @@ public abstract class Coupon {
 	 * @return 할인 될 금액
 	 */
 	public abstract int calculateDiscount(int price);
+
+	@Override
+	public String toString() {
+		SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+		return "유효기간=" + (validTo == null ? "없음" : dateFormat.format(validTo));
+	}
+
 }
