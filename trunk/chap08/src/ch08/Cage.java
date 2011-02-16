@@ -1,10 +1,12 @@
 package ch08;
 
-public class Cage<T extends Animal> {
+import java.io.Serializable;
+
+public class Cage<T extends Animal & Serializable> {
 
     private T animal;
 
-    public void add(T animals) {
+    public void add(T animal) {
         this.animal = animal;
     }
 
