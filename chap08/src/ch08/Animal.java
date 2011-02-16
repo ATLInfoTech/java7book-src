@@ -1,6 +1,10 @@
 package ch08;
 
-public class Animal {
+import java.io.Serializable;
 
-	public void eat(Food food) {}
+public class Animal implements Serializable {
+
+	public void eat(Food food) {
+		System.out.println("³È³È");
+	}
 }

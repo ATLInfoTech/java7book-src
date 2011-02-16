@@ -17,4 +17,8 @@ public class Zookeeper {
 	public <T extends Animal> void push(Cage<T> cage, T animal) {
 		cage.add(animal);
 	}
+	
+	public <T extends Tiger> T pullTiger(Cage<T> cage) {
+		return cage.remove();
+	}
 }
