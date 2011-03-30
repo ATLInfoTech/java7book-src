@@ -20,6 +20,7 @@ public class FormatterSample {
 		}
 		formatArgIndex();
 		formatGeneralConversion();
+		formatNumberConversion();
 	}
 
 	private static void formatUsageStringBuilder() {
@@ -72,7 +73,15 @@ public class FormatterSample {
 		Formatter formatter = new Formatter();
 		formatter.format("[%b] [%-8B] [%8b] [%b]\n", "true", false, "가나다", null);
 		formatter.format("%h %<H %h\n", new Object(), 2);
-		formatter.format("%h %<H %h\n", new Object(), 2);
+		formatter.format("[%6s], [%<-6s], [%<3s]\n", "자바개발");
+		formatter.format("%s %<S %s\n", "자바Java", null);
+		formatter.format("%c %<C %c %<C\n", 'j', 99);
+		System.out.println(formatter.toString());
+	}
+	
+	private static void formatNumberConversion() {
+		Formatter formatter = new Formatter();
+		
 		System.out.println(formatter.toString());
 	}
 }
