@@ -11,12 +11,12 @@ public class FormatterSample {
 		try {
 			formatUsageFileWriter();
 		} catch (IOException ex) {
-			ex.printStackTrace();
+			System.out.println(ex.getMessage());
 		}
 		try {
 			formatUsageFilePath();
 		} catch (IOException ex) {
-			ex.printStackTrace();
+			System.out.println(ex.getMessage());
 		}
 		formatArgIndex();
 		formatGeneralConversion();
@@ -81,13 +81,17 @@ public class FormatterSample {
 	
 	private static void formatNumberConversion() {
 		Formatter formatter = new Formatter();
-		formatter.format("%d %d %f %f \n", 1, 10L, 1.2, 3.123456789);
-		formatter.format("%o %x \n", 20, 28);
+		formatter.format("%d %d %o %x \n", 1, 10L, 20, 28);
+		formatter.format("%f %f \n", 1.2, 31.1234567);
 		formatter.format("%e %E %e \n", 3141.592, 1234567890.123, 0.123456789);
 		formatter.format("%g %G \n", 3141.592, 1234567890.123);
-		formatter.format("%g %G \n", 3141.59, 1234567890.123);
-		formatter.format("%a %A \n", 3141.592, 1234567890.123);
-		formatter.format("%a %A \n", 3141.59, 1234567890.123);
+		
+		formatter.format("%.8f %.9f \n", 1.2, 31.1234567);
+		formatter.format("%.5e %.3E %.8e \n", 3141.592, 1234567890.123, 0.123456789);
+		formatter.format("%.4g %.10G \n", 3141.592, 1234567890.123);
+		
+		
+		
 		System.out.println(formatter.toString());
 	}
 }
