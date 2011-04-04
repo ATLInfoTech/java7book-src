@@ -2,6 +2,7 @@ package ch12;
 
 import java.io.FileWriter;
 import java.io.IOException;
+import java.util.Date;
 import java.util.Formatter;
 
 public class FormatterSample {
@@ -21,6 +22,7 @@ public class FormatterSample {
 		formatArgIndex();
 		formatGeneralConversion();
 		formatNumberConversion();
+		formatTimeConversion();
 	}
 
 	private static void formatUsageStringBuilder() {
@@ -90,7 +92,18 @@ public class FormatterSample {
 		formatter.format("%.5e %.3E %.8e \n", 3141.592, 1234567890.123, 0.123456789);
 		formatter.format("%.4g %.10G \n", 3141.592, 1234567890.123);
 		
+		formatter.format("[%0,8d] [%+0,8d] [%0, 8d]\n", 1234, 1234, 1234);
+		formatter.format("[%0,8d] [%(0,8d] \n", -1234, -1234);
+		formatter.format("[%-,8.1f] \n", 123.45);
 		
+		System.out.println(formatter.toString());
+	}
+	
+	private static void formatTimeConversion() {
+		Formatter formatter = new Formatter();
+		
+		formatter.format("%tY-%<tm-%<td %<tH:%<tI:%<tM \n", new Date());
+		formatter.format("%tB %<tb %<tA %<ta \n", new Date());
 		
 		System.out.println(formatter.toString());
 	}
