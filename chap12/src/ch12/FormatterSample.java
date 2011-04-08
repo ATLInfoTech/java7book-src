@@ -4,6 +4,7 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.util.Date;
 import java.util.Formatter;
+import java.util.Locale;
 
 public class FormatterSample {
 
@@ -23,6 +24,7 @@ public class FormatterSample {
 		formatGeneralConversion();
 		formatNumberConversion();
 		formatTimeConversion();
+		formatSpecialCharConversion();
 	}
 
 	private static void formatUsageStringBuilder() {
@@ -102,9 +104,19 @@ public class FormatterSample {
 	private static void formatTimeConversion() {
 		Formatter formatter = new Formatter();
 		
-		formatter.format("%tY-%<tm-%<td %<tH:%<tI:%<tM \n", new Date());
+		formatter.format("%tY-%<tm-%<td %<tp %<tH:%<tI:%<tM \n", new Date());
 		formatter.format("%tB %<tb %<tA %<ta \n", new Date());
 		
+		formatter.format(Locale.US, "%tY-%<tm-%<td %<tp %<tH:%<tI:%<tM \n", new Date());
+		formatter.format(Locale.US, "%tB %<tb %<tA %<ta \n", new Date());
+		
+		formatter.format("%tF %<tT \n", new Date());
+		System.out.println(formatter.toString());
+	}
+	
+	private static void formatSpecialCharConversion() {
+		Formatter formatter = new Formatter();
+		formatter.format("퍼센트 기호 %%는 %% 변환 기호를 사용해서 표현%n줄변경");
 		System.out.println(formatter.toString());
 	}
 }

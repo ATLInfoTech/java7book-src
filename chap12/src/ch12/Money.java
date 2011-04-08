@@ -5,9 +5,8 @@ import java.util.Currency;
 import java.util.Formattable;
 import java.util.FormattableFlags;
 import java.util.Formatter;
-import java.util.Locale;
 
-public class Money { // implements Formattable {
+public class Money implements Formattable {
 	private BigDecimal value;
 	private Currency currency;
 
@@ -28,9 +27,31 @@ public class Money { // implements Formattable {
 
 	public void formatTo(Formatter formatter, int flags, int width,
 			int precision) {
-		StringBuilder builder = new StringBuilder();
-		
-		Locale locale = formatter.locale();
-		formatter.format("°á°ú");
+		StringBuilder sb = new StringBuilder();
+		String groupFlag = "";
+		if ((flags & FormattableFlags.ALTERNATE) == FormattableFlags.ALTERNATE) {
+			groupFlag = ",";
+		}
+		if (currency.getDefaultFractionDigits() == 0) {
+			String formatStr = "%" + groupFlag + "d %s";
+			sb.append(String.format(formatStr, value.intValue(), currency
+					.getCurrencyCode()));
+		} else {
+			String formatStr = "%" + groupFlag + "."
+					+ currency.getDefaultFractionDigits() + "f %s";
+			sb.append(String.format(formatStr, value, currency
+					.getCurrencyCode()));
+		}
+		String formattedStr = sb.toString();
+
+		if (width > -1) {
+			if ((flags & FormattableFlags.LEFT_JUSTIFY) == FormattableFlags.LEFT_JUSTIFY) {
+				formatter.format("%-" + width + "s", formattedStr);
+			} else {
+				formatter.format("%" + width + "s", formattedStr);
+			}
+		} else {
+			formatter.format("%s", formattedStr);
+		}
 	}
 }
