@@ -32,17 +32,17 @@ public class BigDecimalSample {
 		BigDecimal val = BigDecimal.valueOf(1.23);
 		BigDecimal newval = val.setScale(4);
 		System.out.println(newval.unscaledValue() + ", " + newval.scale());
-		
+
 		BigDecimal newval2 = val.setScale(1, RoundingMode.HALF_UP);
 		System.out.println(newval2.unscaledValue() + ", " + newval2.scale());
 		System.out.println(newval2);
 	}
-	
+
 	private static void round() {
 		System.out.println("-- round");
 		BigDecimal val1 = BigDecimal.valueOf(1.23);
 		BigDecimal val2 = BigDecimal.valueOf(1.26);
-		
+
 		System.out.println(val1.setScale(1, RoundingMode.HALF_EVEN));
 		System.out.println(val2.setScale(1, RoundingMode.HALF_EVEN));
 		System.out.println(val1.setScale(1, RoundingMode.HALF_UP));
@@ -62,12 +62,16 @@ public class BigDecimalSample {
 		System.out.println(ret.unscaledValue());
 		System.out.println(ret.floatValue());
 	}
-	
+
 	private static void divideAndRouding() {
 		BigDecimal op1 = new BigDecimal(10);
 		BigDecimal op2 = new BigDecimal(3);
 		System.out.println(op1.divide(op2, RoundingMode.HALF_UP));
 		System.out.println(op1.divide(op2, 5, RoundingMode.HALF_UP));
+
+		BigDecimal ret = op1.divide(op2, new MathContext(5,
+				RoundingMode.HALF_UP));
+		System.out.println(ret.scale());
 	}
 
 }
