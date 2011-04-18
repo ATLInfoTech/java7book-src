@@ -15,7 +15,7 @@ public class FileCopySample {
 				os.write(data, 0, len);
 			}
 		} catch (IOException ex) {
-			ex.printStackTrace();;
+			ex.printStackTrace();
 		}
 	}
 }
