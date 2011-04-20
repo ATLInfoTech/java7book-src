@@ -1,2 +1,0 @@
-이 파일은 소스 파일입니다.
-This is source file.
