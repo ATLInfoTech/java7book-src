@@ -13,7 +13,7 @@ public class StopWatch {
 		stopTime = System.nanoTime();
 	}
 
-	public Time getPassedTime() {
+	public Time getElapsedTime() {
 		return new Time(stopTime - startTime);
 	}
 }
