@@ -32,13 +32,14 @@ public class SwingCompSet1 extends JFrame {
 	private JCheckBox hobbyRidingCheckBox;
 	private JRadioButton maleBtn;
 	private JRadioButton femaleBtn;
+	private JTextArea introTextArea;
 	private MyActionListener listener = new MyActionListener();
 
 	public SwingCompSet1() {
 		super("스윙 컴포넌트 세트 1");
 		setDefaultCloseOperation(DISPOSE_ON_CLOSE);
 		setLayout(new BorderLayout());
-		
+
 		// 내용 부분 폼
 		createFormPart();
 
@@ -85,7 +86,7 @@ public class SwingCompSet1 extends JFrame {
 
 		hobbyPanel.setAlignmentX(Component.LEFT_ALIGNMENT);
 		formPanel.add(hobbyPanel);
-
+		
 		formPanel.add(Box.createRigidArea(new Dimension(0, 10)));
 
 		// 성별 영역
@@ -106,13 +107,13 @@ public class SwingCompSet1 extends JFrame {
 
 		// 소개 영역
 		formPanel.add(new JLabel("소개:"));
-		JTextArea content = new JTextArea(5, 20);
-		JScrollPane contentPane = new JScrollPane(content);
-		formPanel.add(contentPane);
-		contentPane.setAlignmentX(Component.LEFT_ALIGNMENT);
+		introTextArea = new JTextArea(5, 20);
+		JScrollPane introContentPane = new JScrollPane(introTextArea);
+		formPanel.add(introContentPane);
+		introContentPane.setAlignmentX(Component.LEFT_ALIGNMENT);
 
-		formPanel.setBorder(BorderFactory.createEmptyBorder(10,10,10,10));
-		
+		formPanel.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
+
 		add(formPanel, BorderLayout.CENTER);
 	}
 
@@ -120,9 +121,16 @@ public class SwingCompSet1 extends JFrame {
 		JPanel btnPanel = new JPanel();
 		JButton saveButton = new JButton("저장");
 		btnPanel.add(saveButton);
-		
+
 		saveButton.setActionCommand("save");
-		saveButton.addActionListener(listener);
+		//saveButton.addActionListener(listener);
+		saveButton.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				JOptionPane.showMessageDialog(SwingCompSet1.this,
+						"저장했습니다", "저장", JOptionPane.INFORMATION_MESSAGE);
+			}
+		});
 		add(btnPanel, BorderLayout.SOUTH);
 	}
 
@@ -150,9 +158,10 @@ public class SwingCompSet1 extends JFrame {
 			}
 			String message = nameField.getText() + " / "
 					+ countryBox.getSelectedItem() + " / "
-					+ hobbies + " / " 
-					+ (maleBtn.isSelected() ? "남" : femaleBtn.isSelected() ? "여" : "미지정");
-			
+					+ hobbies + " / "
+					+ (maleBtn.isSelected() ? "남" : femaleBtn.isSelected() ? "여" : "미지정")
+					+ "\n" + introTextArea.getText();
+
 			JOptionPane.showMessageDialog(SwingCompSet1.this, message, "입력 정보", JOptionPane.INFORMATION_MESSAGE);
 		}
 	}
@@ -161,5 +170,4 @@ public class SwingCompSet1 extends JFrame {
 		SwingCompSet1 compset = new SwingCompSet1();
 		compset.setVisible(true);
 	}
-	
 }
