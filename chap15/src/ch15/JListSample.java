@@ -1,14 +1,7 @@
 package ch15;
 
 import java.awt.Dimension;
-import javax.swing.BorderFactory;
-import javax.swing.Box;
-import javax.swing.BoxLayout;
-import javax.swing.JFrame;
-import javax.swing.JList;
-import javax.swing.JPanel;
-import javax.swing.JScrollPane;
-import javax.swing.ListSelectionModel;
+import javax.swing.*;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 
@@ -20,7 +13,8 @@ public class JListSample {
 		
 		JPanel contentPanel = new JPanel();
 		contentPanel.setBorder(BorderFactory.createEmptyBorder(10,10,10,10));
-		contentPanel.setLayout(new BoxLayout(contentPanel, BoxLayout.PAGE_AXIS));
+		contentPanel.setLayout(
+				new BoxLayout(contentPanel, BoxLayout.PAGE_AXIS));
 		
 		String[] socialService = {"Facebook", "twitter", "LinkedIn", 
 			"싸이월드", "요즘", "미투데이", "foursquare", "Instagram",
@@ -28,18 +22,20 @@ public class JListSample {
 		
 		JList<String> list1 = new JList<>(socialService);
 		list1.setLayoutOrientation(JList.VERTICAL);
-		list1.setSelectionMode(ListSelectionModel.MULTIPLE_INTERVAL_SELECTION);
+		list1.setSelectionMode(
+				ListSelectionModel.MULTIPLE_INTERVAL_SELECTION);
 		JScrollPane list1Pane = new JScrollPane(list1);
 		list1Pane.setPreferredSize(new Dimension(240, 80));
 		
-		JList list2 = new JList(socialService);
+		JList<String> list2 = new JList<>(socialService);
 		list2.setLayoutOrientation(JList.VERTICAL_WRAP);
 		list2.setVisibleRowCount(0);
-		list2.setSelectionMode(ListSelectionModel.SINGLE_INTERVAL_SELECTION);
+		list2.setSelectionMode(
+				ListSelectionModel.SINGLE_INTERVAL_SELECTION);
 		JScrollPane list2Pane = new JScrollPane(list2);
 		list2Pane.setPreferredSize(new Dimension(240, 80));
 		
-		JList list3 = new JList(socialService);
+		JList<String> list3 = new JList<>(socialService);
 		list3.setLayoutOrientation(JList.HORIZONTAL_WRAP);
 		list3.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 		JScrollPane list3Pane = new JScrollPane(list3);

@@ -5,12 +5,7 @@ import java.awt.Container;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.Random;
-import javax.swing.DefaultListModel;
-import javax.swing.JButton;
-import javax.swing.JFrame;
-import javax.swing.JList;
-import javax.swing.JPanel;
-import javax.swing.JScrollPane;
+import javax.swing.*;
 
 public class DefaultListModelSample {
 
@@ -26,7 +21,7 @@ public class DefaultListModelSample {
 		listModel.addElement("2");
 		listModel.addElement("3");
 		
-		final JList list = new JList(listModel);
+		final JList<String> list = new JList<>(listModel);
 		list.setVisibleRowCount(6);
 		JScrollPane listPane = new JScrollPane(list);
 		
@@ -39,7 +34,8 @@ public class DefaultListModelSample {
 		addBtn.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				DefaultListModel<String> listModel = (DefaultListModel)list.getModel();
+				DefaultListModel<String> listModel = 
+						(DefaultListModel<String>)list.getModel();
 				Random random = new Random();
 				int randomNum = random.nextInt(10) + 1;
 				listModel.addElement(Integer.toString(randomNum));

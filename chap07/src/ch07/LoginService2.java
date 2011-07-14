@@ -10,7 +10,7 @@ public class LoginService2 {
 			return true;
 		}
 		try {
-			System.out.println(loader.load("M003")); // 예외 발생
+			System.out.println(loader.load("M003")); // 익셉션 발생
 		} catch (MessageNotFoundException ex) {
 			throw new LoginInternalException("내부 에러 발생", ex);
 		}

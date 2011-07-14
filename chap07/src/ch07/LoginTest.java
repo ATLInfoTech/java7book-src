@@ -7,7 +7,7 @@ public class LoginTest {
 		try {
 			loginService.login("a", "123");
 		} catch (MessageNotFoundException ex) {
-			System.out.println("예외 발생: " + ex.getMessage());
+			System.out.println("익셉션 발생: " + ex.getMessage());
 		}
 	}
 }
