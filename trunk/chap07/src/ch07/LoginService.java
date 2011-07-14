@@ -10,7 +10,7 @@ public class LoginService {
 			return true;
 		}
 		try {
-			System.out.println(loader.load("M003")); // 예외 발생
+			System.out.println(loader.load("M003")); // 익셉션 발생
 		} catch (MessageNotFoundException ex) {
 			System.out.println("웁스, 메시지 없음");
 			throw ex;

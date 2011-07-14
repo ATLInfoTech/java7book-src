@@ -1,0 +1,7 @@
+-d api
+-sourcepath src
+-subpackages appa
+-author
+-version
+-private
+
